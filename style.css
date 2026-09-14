@@ -1,114 +1,125 @@
-:root {
-	--ink: #1c2a29;
-	--muted: #6c7975;
-	--paper: #f5f6f1;
-	--card: #ffffff;
-	--mint: #b9d8c4;
-	--coral: #e7775e;
-	--line: #dbe2dc;
-	--display: "Space Grotesk", sans-serif;
-	--body: "DM Sans", sans-serif;
-}
+ /* Global Styles */
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
 
-* { box-sizing: border-box; }
+    /* Task 1: Responsive Profile Styles */
+    .profile-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-html { scroll-behavior: smooth; }
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-body {
-	margin: 0;
-	color: var(--ink);
-	background: var(--paper);
-	font-family: var(--body);
-	line-height: 1.6;
-}
+    .skills-list span {
+      display: inline-block;
+      background-color: #e9ecef;
+      padding: 4px 12px;
+      margin-right: 5px;
+      border-radius: 15px;
+      font-size: 0.9rem;
+    }
 
-a { color: inherit; text-decoration: none; }
+    /* Task 1 Requirement: Responsive vertical layout on mobile screen */
+    @media (max-width: 768px) {
+      .profile-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
 
-.container { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+    /* Task 2: Project Cards Styles */
+    .projects-container {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-.site-header { border-bottom: 1px solid var(--line); background: rgba(245, 246, 241, .9); }
-.nav-bar { display: flex; align-items: center; justify-content: space-between; min-height: 80px; }
-.brand { color: var(--ink); font-family: var(--display); font-size: 1.5rem; font-weight: 700; letter-spacing: .08em; }
-.brand span { color: var(--coral); }
-.nav-links { display: flex; gap: 32px; color: var(--muted); font-size: .83rem; font-weight: 700; }
-.nav-links a { transition: color .2s ease; }
-.nav-links a:hover { color: var(--coral); }
+    .project-card {
+      flex: 1 1 300px;
+      max-width: 350px;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* Task 2 Concept: Transition */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.hero { padding: 96px 0 112px; }
-.hero-copy { max-width: 690px; animation: rise-in .7s ease both; }
-.eyebrow, .section-label, .project-type { margin: 0 0 14px; color: var(--coral); font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
-h1, h2, h3 { font-family: var(--display); line-height: 1.08; }
-h1 { max-width: 700px; margin: 0; font-size: clamp(3.2rem, 8vw, 6.6rem); letter-spacing: -.07em; }
-h1 em { color: var(--coral); font-style: normal; }
-.hero-text { max-width: 530px; margin: 28px 0 32px; color: var(--muted); font-size: 1.05rem; }
-.outline-button { display: inline-flex; align-items: center; gap: 22px; padding: 13px 18px; border: 1px solid var(--ink); font-size: .8rem; font-weight: 700; transition: background .25s ease, color .25s ease, transform .25s ease; }
-.outline-button:hover { color: white; background: var(--ink); transform: translateY(-3px); }
+    /* Task 2 Concept: Hover Transform */
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    }
 
-.profile-panel { display: flex; align-items: center; justify-content: space-between; gap: 64px; margin-top: 90px; padding: 32px; background: var(--mint); }
-.profile-image-wrap { flex: 0 1 46%; height: 310px; overflow: hidden; }
-.profile-image-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.75); }
-.profile-info { flex: 1; max-width: 460px; }
-.profile-info h2 { margin: 0 0 4px; font-size: 2.1rem; letter-spacing: -.04em; }
-.program { margin: 0 0 18px; color: var(--coral); font-weight: 700; }
-.profile-info > p:not(.section-label):not(.program) { color: #4e625a; }
-.skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-.skills span { padding: 7px 11px; border: 1px solid rgba(28, 42, 41, .25); font-size: .72rem; font-weight: 700; }
+    /* Task 2 Concept: CSS Filter */
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
 
-.projects-section { padding: 90px 0 100px; background: #e9eee8; }
-.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
-.section-heading h2, .dashboard-section h2 { margin: 0; font-size: clamp(2.3rem, 5vw, 4rem); letter-spacing: -.06em; }
-.section-heading > p { max-width: 270px; margin: 0 0 5px; color: var(--muted); }
-.project-grid { display: flex; flex-wrap: wrap; gap: 20px; }
-.project-card { display: flex; flex: 1 1 30%; flex-direction: column; min-width: 260px; background: var(--card); transition: transform .28s ease, box-shadow .28s ease; }
-.project-card:hover { transform: translateY(-10px); box-shadow: 0 18px 35px rgba(28, 42, 41, .12); }
-.project-image { height: 205px; overflow: hidden; }
-.project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease, filter .35s ease; }
-.project-card:hover .project-image img { transform: scale(1.06); }
-.image-filtered img { filter: grayscale(1) contrast(.9); }
-.image-filtered:hover img { filter: grayscale(0) contrast(1); }
-.project-content { display: flex; flex: 1; flex-direction: column; padding: 24px; }
-.project-content h3 { margin: 0 0 12px; font-size: 1.35rem; letter-spacing: -.04em; }
-.project-content p:not(.project-type) { margin: 0 0 24px; color: var(--muted); font-size: .9rem; }
-.text-link { margin-top: auto; color: var(--coral); font-size: .8rem; font-weight: 700; }
-.text-link span { display: inline-block; margin-left: 8px; transition: transform .2s ease; }
-.text-link:hover span { transform: translateX(5px); }
+    /* Task 2 Concept: Remove filter on hover */
+    .project-card:hover img {
+      filter: grayscale(0%);
+    }
 
-.dashboard-section { padding: 100px 0; }
-.compact-heading { align-items: center; margin-bottom: 28px; }
-.status-pill { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .8rem; font-weight: 700; }
-.status-pill span { width: 8px; height: 8px; border-radius: 50%; background: #5eaf77; }
-.dashboard-items { width: 100%; }
-.dashboard-item { display: flex; flex: 1 1 220px; align-items: center; gap: 14px; min-height: 90px; padding: 18px; border: 1px solid var(--line); background: var(--card); }
-.dashboard-icon { display: grid; width: 42px; height: 42px; place-items: center; color: var(--coral); background: #fff0eb; font-size: 1.3rem; }
-.dashboard-item div { display: flex; flex: 1; flex-direction: column; }
-.dashboard-item strong { font-family: var(--display); font-size: .95rem; }
-.dashboard-item small { color: var(--muted); font-size: .72rem; }
-.dashboard-item b { color: var(--coral); }
+    /* Task 3: Achievement Card Styles */
+    .achievement-card {
+      /* Task 3 Requirement: position: relative */
+      position: relative;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
 
-.achievement-section { padding-bottom: 110px; }
-.achievement-card { position: relative; display: flex; align-items: center; gap: 36px; overflow: hidden; padding: 48px; color: white; background: var(--ink); }
-.achievement-card::before { position: absolute; right: -20px; bottom: -80px; width: 280px; height: 280px; border: 1px solid rgba(185, 216, 196, .35); border-radius: 50%; content: ""; }
-.featured-badge { position: absolute; top: 0; right: 0; padding: 9px 18px; color: var(--ink); background: var(--coral); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.achievement-mark { display: grid; flex: 0 0 76px; width: 76px; height: 76px; place-items: center; color: var(--coral); border: 1px solid var(--coral); font-size: 2rem; }
-.achievement-card h2 { max-width: 600px; margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3.3rem); letter-spacing: -.05em; }
-.achievement-card p:not(.section-label) { max-width: 600px; margin: 0 0 18px; color: #b8c4bf; }
-.achievement-card time { color: var(--mint); font-size: .78rem; font-weight: 700; }
+    /* Task 3 Requirement: Decorative line using ::before pseudo-element */
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background-color: #0d6efd;
+    }
 
-.site-footer { padding: 24px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .75rem; }
-.footer-inner { display: flex; justify-content: space-between; gap: 20px; }
-@keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    /* Task 3 Requirement: Featured Badge using position: absolute */
+    .featured-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: #ffc107;
+      color: #000000;
+      font-weight: bold;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
 
-@media (max-width: 700px) {
-	.container { width: min(100% - 32px, 1120px); }
-	.nav-bar { min-height: 68px; }
-	.nav-links { gap: 14px; font-size: .72rem; }
-	.hero { padding: 65px 0 70px; }
-	h1 { font-size: clamp(3rem, 16vw, 5rem); }
-	.profile-panel { flex-direction: column; align-items: stretch; gap: 28px; margin-top: 60px; padding: 18px; }
-	.profile-image-wrap { flex-basis: auto; height: 240px; }
-	.projects-section, .dashboard-section { padding: 70px 0; }
-	.section-heading { align-items: start; flex-direction: column; }
-	.project-card { flex-basis: 100%; }
-	.achievement-card { align-items: start; flex-direction: column; padding: 36px 24px; }
-	.footer-inner { align-items: start; flex-direction: column; }
-}
+    /* Dashboard Item Styling (Task 4) */
+    .dashboard-item {
+      flex: 1 1 200px;
+      background-color: #ffffff;
+      border-left: 4px solid #0d6efd;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+  
